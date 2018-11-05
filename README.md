@@ -1,6 +1,8 @@
 # FirebaseAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+Proyecto donde se realiza un CRUD (de superheroes) contra Firebase. siguiendo unos de los modulos del curo de Fernando Herrera (aunque con versiones más actualizadas), Angular 6.2, Bootstrap 4.1 y Fontawesome 5.
+
+
 
 ## Development server
 
