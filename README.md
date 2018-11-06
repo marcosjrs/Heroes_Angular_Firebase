@@ -2,6 +2,8 @@
 
 Proyecto donde se realiza un CRUD (de superheroes) contra Firebase. siguiendo unos de los modulos del curo de Fernando Herrera (aunque con versiones más actualizadas), Angular 6.2, Bootstrap 4.1 y Fontawesome 5.
 
+Nota: El repo de firebase actualizado ya no va a estar disponible de forma pública.
+Para poner de forma pública se haría desde una url similar a https://console.firebase.google.com/project/heroesapp-mjrs/database/heroesapp-mjrs/rules
 
 
 ## Development server
