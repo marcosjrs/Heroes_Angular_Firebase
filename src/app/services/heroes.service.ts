@@ -10,6 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class HeroesService {
   heroesURL:string = "https://heroesapp-mjrs.firebaseio.com/heroes.json";
+  heroeURL:string = "https://heroesapp-mjrs.firebaseio.com/heroes/";
   constructor(private httpClient:HttpClient) { 
 
   }
@@ -24,6 +25,11 @@ export class HeroesService {
   getHeroes(){
     const headers = new HttpHeaders({ 'Content-Type':'application/json' });
     return this.httpClient.get(this.heroesURL,{headers});
+  }
+
+  eliminarHeroe(heroe:Heroe){
+    const headers = new HttpHeaders({ 'Content-Type':'application/json' });
+    return this.httpClient.delete(`${this.heroeURL}/${heroe.key$}.json`,{headers});
   }
 
 

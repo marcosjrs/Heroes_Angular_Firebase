@@ -11,8 +11,11 @@ import { map, flatMap } from 'rxjs/operators';
 export class HeroesComponent implements OnInit {
   heroes:Heroe[];
 
-  constructor(public heroesSvc:HeroesService) {
+  constructor(public heroesSvc:HeroesService) {    
+    this.getHeroes();
+  }
 
+  getHeroes(){
     this.heroesSvc.getHeroes()
     .pipe(
       map(data => Object.keys(data).map(k =>{ 
@@ -22,9 +25,15 @@ export class HeroesComponent implements OnInit {
       }))
     )
     .subscribe( heroes => this.heroes = heroes); 
-
   }
-  
+
+  eliminar(heroe:Heroe){
+    this.heroesSvc.eliminarHeroe(heroe).subscribe(
+        resp => this.getHeroes(), 
+        err => console.log(err)
+      );
+  }
+
   ngOnInit() {
   }
 
