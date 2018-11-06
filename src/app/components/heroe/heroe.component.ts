@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Heroe } from 'src/app/models/heroe';
+import { HeroesService } from 'src/app/services/heroes.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-heroe',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroeComponent implements OnInit {
 
-  constructor() { }
+  heroe:Heroe;
+
+  constructor(public heroesSvc:HeroesService) { 
+    this.inicializarHeroe();
+  }
 
   ngOnInit() {
+  }
+  
+  inicializarHeroe(){
+    this.heroe = new Heroe("","Marvel","");
+  }
+
+  guardar(){
+    this.heroesSvc.addNuevoHeroe(this.heroe).subscribe( item => console.log(item) );
+  }
+  
+  reset(formulario:NgForm){
+    this.inicializarHeroe();
+    formulario.reset(this.heroe);
   }
 
 }
