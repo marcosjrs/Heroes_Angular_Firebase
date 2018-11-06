@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HeroesService } from 'src/app/services/heroes.service';
+import { Heroe } from 'src/app/models/heroe';
+import { map, flatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-heroes',
@@ -6,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
+  heroes:Heroe[];
 
-  constructor() { }
+  constructor(public heroesSvc:HeroesService) {
 
+    this.heroesSvc.getHeroes()
+    .pipe(
+      map(data => Object.keys(data).map(k =>{ 
+        let h:Heroe = data[k];
+        h.key$ = k;
+        return h;
+      }))
+    )
+    .subscribe( heroes => this.heroes = heroes); 
+
+  }
+  
   ngOnInit() {
   }
 

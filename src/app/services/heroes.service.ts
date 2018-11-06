@@ -15,9 +15,16 @@ export class HeroesService {
   }
 
   addNuevoHeroe(heroe:Heroe){
+    delete heroe.key$; // firebase no acepta que se le envie un atributo $key, aunque sea vacio
     const sHeroe:string = JSON.stringify(heroe);
     const headers = new HttpHeaders({ 'Content-Type':'application/json' });
     return this.httpClient.post(this.heroesURL,sHeroe,{headers});
   }
+
+  getHeroes(){
+    const headers = new HttpHeaders({ 'Content-Type':'application/json' });
+    return this.httpClient.get(this.heroesURL,{headers});
+  }
+
 
 }
